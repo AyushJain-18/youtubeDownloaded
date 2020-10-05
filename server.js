@@ -36,6 +36,7 @@ app.use('/static',express.static('public'));
 
 //application routes
 app.get('/', (req,res)=>{
+    console.log('loaded');
     if(req.query && req.query.error){
         res.sendFile(path.join(__dirname,'client','error.html'));
     }else{
