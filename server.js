@@ -10,7 +10,7 @@ let uglifyEs    = require('uglify-es');
 
 
 const app      =  express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 8000;
 
 // middlewares
 app.use(cors());
