@@ -47,13 +47,14 @@ app.get('/', (req,res)=>{
 
 
 app.get('/download', async (req,res)=>{
-      let filename = 'video.mp4'
-       let url =  req.query.URL;
-        // Content-Disposition is ued to define what kind of response we sendig back
+       let fileFormat =   req.query.fileFormat;
+       let filename   =   req.query.fileName+'.mp4';
+       let url        =   req.query.URL;
+        1// Content-Disposition is ued to define what kind of response we sendig back
         // inline html , attachment 
     try{
         res.header('Content-Disposition', `attachment; filename=${filename}`);
-        let a = await ytdl(url, { format: '720p' }).pipe(res);
+        let a = await ytdl(url, { format: fileFormat }).pipe(res);
     } catch(error){
             let errorMessage = encodeURIComponent(error.message);
             res.header('Content-Disposition', `inline;`);

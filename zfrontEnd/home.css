@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Ranchers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Piazzolla&display=swap');
+
+html{
+    box-sizing: border-box;
+}
+
+body{
+    margin          : 0;
+    height          : 100vh;
+    font-family     : 'Ranchers', cursive;
+    background-color: whitesmoke;
+}
+
+
+.header{
+    width           : 100%;
+    padding-top     : 10vh;
+    display         : flex;
+    flex-direction  : row;
+    justify-content : center;
+
+    font-size       : 4rem;
+    word-spacing    : 10px;
+    letter-spacing  : 4px;
+    font-weight     : 700;
+    color           : brown;
+  
+}
+.urlContainer{
+    width           : 100%;
+    height          : 80vh;
+    padding-top     : 5vh;
+    display         : flex;
+    flex-direction  : column;
+    justify-content : space-evenly ;
+    align-items     : center;
+}
+.errorMessage{
+    color           : red; 
+    font-size       : 1.5rem;
+    letter-spacing  : 2px ;
+    line-height     : 50px ;
+}
+.downloadFile{
+    padding             : 12px 15px;
+    font-family         : 'Ranchers', cursive;
+    font-weight         : bolder;
+    font-size           : 2rem;
+    letter-spacing      : 3px;
+    color               : black;
+    /* to add hover style */
+    background          :linear-gradient(60deg,#515050 50%,#e0dfdf 0);
+    background-size     : 300% 100%;
+    background-position : 100% 100%;
+    -webkit-transition  : all .2s ease-out;
+    transition          : all .2s ease-out;
+}
+.downloadFile:hover{
+    cursor              : not-allowed;
+}
+.downloadFileEnabled:hover{
+    background-position : 0 100%;
+    color               : #e0dfdf; 
+    cursor              : pointer !important;
+}
+.downloadFileEnabled:active{
+   transform: scale(0.95);
+}
+.inputUrl{
+    padding             : 10px;
+    min-width           : 800px;
+    font-family         : 'Piazzolla', serif;
+    font-size           : 1rem;
+    letter-spacing      : 1px;
+    box-shadow          : 10px 6px 10px #a29d9d;
+}
+
+.urlContainerRow{
+    display             : flex;
+    flex-direction      : row;
+    justify-content     : space-between;
+    width               : 823px;
+    font-size           : 2rem ;
+}
+
+.fileName{
+    box-shadow          : 10px 6px 10px #a29d9d;
+    padding             : 10px;
+    width               : 50% ;  
+    font-family         : 'Piazzolla', serif;
+}
+.saveOptions{
+    box-shadow          : 10px 6px 10px #a29d9d;
+    border              : 2px solid black;
+    padding             : 10px ;
+    width               : 53% ;  
+    font-family         : 'Piazzolla', serif;
+}
+.tooltip{
+    visibility  : hidden;
+    width       : fit-content;
+    max-width   : 200px;
+    font-family : 'Piazzolla', serif;
+    font-size   : .8rem;
+    padding     : 10px 5px ;
+    background-color: black;
+    color: #fff;
+    position: absolute;
+}
+.tooltip::after {
+    content: " ";
+    position: relative;
+    top: 40px;
+    left: -50%;
+    /* margin-left: -5px; */
+    border-width: 12px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+@media(max-width: 1100px) {
+    .tooltip{display: none;}
+} 
+@media(min-width: 700px) and ( max-width: 900px)  {
+    .inputUrl{ min-width           : 600px;}
+    .urlContainerRow{width          : 600px;     font-size      : 1.5rem ;};
+    
+}
+@media(max-width: 700px){
+    .urlContainer   {height          : 70vh;  justify-content : space-between ;}
+    .inputUrl       {min-width       : 85%;}
+    .header         {font-size       : 2rem; margin-bottom: 10%; padding-top: 5vh; }
+    .downloadFile   {font-size       : 1rem;}
+    .errorMessage   {font-size       : 1rem; margin: 20px; line-height: 30px; }
+    .urlContainerRow{width           : 85%;     font-size      : 1rem ; margin: 10px 0px};
+}
+
+@media(max-width: 400px){
+    .header      {    font-size      : 1.5rem;  margin-bottom: 10%;}
+    .fileName    {    width          : 33% ; padding    : 7px; }
+    .saveOptions {    width          : 40% ; padding    : 7px; }
+}
