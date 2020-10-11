@@ -47,14 +47,26 @@ app.get('/', (req,res)=>{
 
 
 app.get('/download', async (req,res)=>{
+    console.log(req.query);
        let fileFormat =   req.query.fileFormat;
-       let filename   =   req.query.fileName+'.mp4';
        let url        =   req.query.URL;
-        1// Content-Disposition is ued to define what kind of response we sendig back
+       let filename;   
+       let filter;
+       let ytdlDownloadObj;
+       if(fileFormat === 'audioonly'){
+        filename  =   req.query.fileName+'.mp3';
+        ytdlDownloadObj    = {filter: fileFormat};
+       }else{
+        filename   =   req.query.fileName+'.mp4';
+        ytdlDownloadObj = { format: fileFormat };
+       }
+      
+   
+        // Content-Disposition is ued to define what kind of response we sendig back
         // inline html , attachment 
     try{
         res.header('Content-Disposition', `attachment; filename=${filename}`);
-        let a = await ytdl(url, { format: fileFormat }).pipe(res);
+         await ytdl(url, ytdlDownloadObj).pipe(res);
     } catch(error){
             let errorMessage = encodeURIComponent(error.message);
             res.header('Content-Disposition', `inline;`);
